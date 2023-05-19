@@ -59,10 +59,10 @@ class GraphicDisplay(tk.Tk):
         # 그리드 생성
         for col in range(0, WIDTH * UNIT, UNIT):  # 0~400 by 80
             x0, y0, x1, y1 = col, 0, col, HEIGHT * UNIT
-            canvas.create_line(x0, y0, x1, y1)
+            canvas.create_line(x0, y0, x1, y1, fill='black')
         for row in range(0, HEIGHT * UNIT, UNIT):  # 0~400 by 80
             x0, y0, x1, y1 = 0, row, HEIGHT * UNIT, row
-            canvas.create_line(x0, y0, x1, y1)
+            canvas.create_line(x0, y0, x1, y1, fill='black')
 
         # 캔버스에 이미지 추가
         self.rectangle = canvas.create_image(50, 50, image=self.shapes[0])

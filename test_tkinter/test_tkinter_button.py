@@ -13,7 +13,7 @@ def func_counter() -> None:
 if __name__ == "__main__":
     window = tk.Tk()
     window.geometry(f"{WIDTH}x{HEIGHT}")
-    window.title("Test Mainloop")
+    window.title("Test Button")
 
     canvas = tk.Canvas(window, bg='white',
                        height=HEIGHT,

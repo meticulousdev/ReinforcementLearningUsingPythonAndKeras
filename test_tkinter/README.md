@@ -1,4 +1,4 @@
-# GraphicUserInterface
+# TestTkinter
 
 - [Canvas, Label, Button](https://github.com/meticulousdev/ReinforcementLearningUsingPythonAndKeras/blob/main/graphic_user_interface/test_tkinter_mainloop.py)
 

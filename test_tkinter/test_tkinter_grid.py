@@ -1,5 +1,4 @@
 import tkinter as tk
-from tkinter import Button
 
 UNIT = 100
 HEIGHT = 5

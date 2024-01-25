@@ -4,6 +4,10 @@ import time
 import numpy as np
 from PIL import ImageTk, Image
 
+UNIT = 100
+HEIGHT = 5
+WIDTH = 5
+
 PhotoImage = ImageTk.PhotoImage
 
 
@@ -25,10 +29,24 @@ class GraphicDisplay(tk.Tk):
 
 
 if __name__ == "__main__":
-    # gd = GraphicDisplay()
-    # print(gd.up)
+    # window = tk.Tk()
+    # file_path: str = "./chap01/img/"
+    # up = PhotoImage(Image.open(file_path + "up.png").resize((13, 13)))
+
+    gd = GraphicDisplay()
+    print(gd.up)
     # print(type(gd.up))
 
     window = tk.Tk()
-    file_path: str = "./chap01/img/"
-    up = PhotoImage(Image.open(file_path + "up.png").resize((13, 13)))
+    window.geometry(f"{WIDTH * UNIT}x{HEIGHT * UNIT}")
+    window.title("Test Grid")
+
+    canvas = tk.Canvas(window, bg='white',
+                       height=HEIGHT * UNIT,
+                       width=WIDTH * UNIT)
+
+    canvas.create_image(50, 50, image=gd.shapes[0])
+    
+    canvas.pack()
+
+    window.mainloop()

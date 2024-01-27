@@ -37,10 +37,10 @@ if __name__ == "__main__":
         x0, y0, x1, y1 = 0, row, HEIGHT * UNIT, row
         canvas.create_line(x0, y0, x1, y1, fill='black')
 
-    canvas.create_image(50, 50, image=circle)
-    canvas.create_image(50, 150, image=rectangle)
-    canvas.create_image(150, 150, image=rectangle)
-    canvas.create_image(250, 150, image=rectangle)
+    canvas.create_image(50, 50, image=rectangle)
+    canvas.create_image(50, 150, image=triangle)
+    canvas.create_image(150, 150, image=triangle)
+    canvas.create_image(250, 150, image=triangle)
     
     canvas.pack()
 

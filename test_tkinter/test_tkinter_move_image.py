@@ -17,13 +17,14 @@ class GraphicDisplay(tk.Tk):
         self.geometry('{0}x{1}'.format(HEIGHT * UNIT, HEIGHT * UNIT + 100))
         (self.up, self.down, self.left, self.right), self.shapes = self.load_images()
         self.canvas = self._build_canvas()
+        self.rectangle = None
     
     def _build_canvas(self):
         canvas = tk.Canvas(self, bg='white',
                            height=HEIGHT * UNIT + 100,
                            width=WIDTH * UNIT)
         # 버튼 초기화
-        up_button = Button(self, text="up")
+        up_button = Button(self, text="up", command=self.move_image)
         up_button.configure(width=10, activebackground="#33B5E5")
         canvas.create_window(WIDTH * UNIT * 0.49, HEIGHT * UNIT + 20,
                              window=up_button)
@@ -55,9 +56,11 @@ class GraphicDisplay(tk.Tk):
         # shapes[0]: rectangle
         # shapes[1]: triangle
         # shapes[2]: circle
-        # start point
-        canvas.create_image(50, 50, image=self.shapes[0])
+        # start
+        self.rectangle = self.shapes[0]
+        canvas.create_image(50, 50, image=self.rectrangle)
 
+        # obstacle
         canvas.create_image(50, 150, image=self.shapes[1])
         canvas.create_image(150, 150, image=self.shapes[1])
         canvas.create_image(250, 150, image=self.shapes[1])
@@ -66,7 +69,7 @@ class GraphicDisplay(tk.Tk):
         canvas.create_image(350, 350, image=self.shapes[1])
         canvas.create_image(450, 350, image=self.shapes[1])
 
-        # end point
+        # goal
         canvas.create_image(450, 450, image=self.shapes[2])
 
         canvas.pack()
@@ -83,6 +86,11 @@ class GraphicDisplay(tk.Tk):
         triangle = PhotoImage(Image.open(file_path + "triangle.png").resize((65, 65)))
         circle = PhotoImage(Image.open(file_path + "circle.png").resize((65, 65)))
         return (up, down, left, right), (rectangle, triangle, circle)
+    
+    def move_image(self):
+        x, y = self.canvas.coords(self.rectangle)
+        self.canvas.move(self.rectangle, UNIT / 2 - x, UNIT / 2 - y)
+        self.is_moving = 0
 
 if __name__ == "__main__":
     grid_world = GraphicDisplay()

@@ -24,7 +24,7 @@ class GraphicDisplay(tk.Tk):
                            height=HEIGHT * UNIT + 100,
                            width=WIDTH * UNIT)
         # 버튼 초기화
-        up_button = Button(self, text="up", command=self.move_image)
+        up_button = Button(self, text="up")
         up_button.configure(width=10, activebackground="#33B5E5")
         canvas.create_window(WIDTH * UNIT * 0.49, HEIGHT * UNIT + 20,
                              window=up_button)
@@ -34,7 +34,7 @@ class GraphicDisplay(tk.Tk):
         canvas.create_window(WIDTH * UNIT * 0.37, HEIGHT * UNIT + 50,
                              window=left_button)
         
-        right_button = Button(self, text="right")
+        right_button = Button(self, text="right", command=self.move_image)
         right_button.configure(width=10, activebackground="#33B5E5")
         canvas.create_window(WIDTH * UNIT * 0.62, HEIGHT * UNIT + 50,
                              window=right_button)
@@ -57,8 +57,7 @@ class GraphicDisplay(tk.Tk):
         # shapes[1]: triangle
         # shapes[2]: circle
         # start
-        self.rectangle = self.shapes[0]
-        canvas.create_image(50, 50, image=self.rectrangle)
+        self.rectangle = canvas.create_image(50, 50, image=self.shapes[0])
 
         # obstacle
         canvas.create_image(50, 150, image=self.shapes[1])

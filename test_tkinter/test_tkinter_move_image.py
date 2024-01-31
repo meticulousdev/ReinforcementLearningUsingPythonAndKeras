@@ -88,8 +88,7 @@ class GraphicDisplay(tk.Tk):
     
     def move_image(self):
         x, y = self.canvas.coords(self.rectangle)
-        self.canvas.move(self.rectangle, UNIT / 2 - x, UNIT / 2 - y)
-        self.is_moving = 0
+        self.canvas.move(self.rectangle, x + 50, y)
 
 if __name__ == "__main__":
     grid_world = GraphicDisplay()
